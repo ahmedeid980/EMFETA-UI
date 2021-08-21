@@ -1,0 +1,54 @@
+<div class="side-nav">
+    <mat-drawer-container dir="rtl" class="example-container" autosize>
+        <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+            <div class="nav-menu">
+                <ul>
+                  <li class="active"><a href="#"><i class="fa fa-home"></i>المعاملات الحسابية</a></li>
+                  <li><a href="#"><i class="fa fa-cogs"></i>الإعدادات</a></li>
+                  <!-- <li><a href="#"><span class="icon-notifications mr-3"></span>Notifications</a></li>
+                  <li><a href="#"><span class="icon-location-arrow mr-3"></span>Direct</a></li>
+                  <li><a href="#"><span class="icon-pie-chart mr-3"></span>Stats</a></li>
+                  <li><a href="#"><span class="icon-sign-out mr-3"></span>Sign out</a></li> -->
+                </ul>
+              </div>
+          
+        </mat-drawer>
+      
+        <!-- tool bar -->
+        <div class="example-sidenav-content">
+          
+            <mat-toolbar>
+                <button mat-icon-button class="example-icon" (click)="drawer.toggle()" aria-label="Example icon-button with menu icon">
+                  <mat-icon>menu</mat-icon>
+                </button>
+                <span>EMFETA</span>
+                <span class="example-spacer"></span>
+                <button mat-icon-button class="example-icon favorite-icon" disabled aria-label="Example icon-button with heart icon">
+                  <mat-icon>settings</mat-icon>
+                </button>
+
+                <!-- extra menu -->
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)='openDialog()'>
+                      <mat-icon>power_settings_new</mat-icon>
+                      <span>تسجيل الخروج</span>
+                    </button>
+                   
+                  </mat-menu>
+
+              </mat-toolbar>
+
+              <!-- all pages here ...-->
+              <div class="content-page container">
+                  
+                 
+              </div>
+
+        </div>
+      
+      </mat-drawer-container>
+</div>
