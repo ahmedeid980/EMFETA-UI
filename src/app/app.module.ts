@@ -16,10 +16,14 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSelectModule} from '@angular/material/select';
 
 import { LoginComponent } from './pages/loginpage/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogInfoComponent } from './utilsForPages/dialog/dialogInfo/dialog-info/dialog-info.component';
+import { CommercialTransactionsComponent } from './pages/commercialTransactions/commercial-transactions/commercial-transactions.component';
+import { CompanySettingsComponent } from './pages/settings/company-settings/company-settings.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +31,14 @@ import { DialogInfoComponent } from './utilsForPages/dialog/dialogInfo/dialog-in
     PageLayoutComponent,
     LoginLayoutComponent,
     LoginComponent,
-    DialogInfoComponent
+    DialogInfoComponent,
+    CommercialTransactionsComponent,
+    CompanySettingsComponent
   ],
   imports: [
     BrowserModule, MatButtonModule, MatIconModule, FormsModule, ReactiveFormsModule, MatDialogModule,
-    AppRoutingModule, MatToolbarModule, MatMenuModule, MatStepperModule, MatFormFieldModule,
-    BrowserAnimationsModule, MatSidenavModule, MatInputModule
+    AppRoutingModule, MatToolbarModule, MatMenuModule, MatStepperModule, MatFormFieldModule, MatSelectModule,
+    BrowserAnimationsModule, MatSidenavModule, MatInputModule, MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

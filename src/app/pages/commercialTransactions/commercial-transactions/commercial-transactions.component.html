@@ -1,0 +1,80 @@
+<div class="contents">
+    <div class="glasses">
+        <div class="content-header">
+            <div class="header">
+                
+              <h1><mat-icon>home</mat-icon>المعاملات التجارية</h1>
+            </div>
+              <div class="views">
+
+
+
+                <div class="example-action-buttons">
+                  <button mat-stroked-button (click)="accordion?.openAll()" style="margin-left: 10px;">عرض الكل</button>
+                  <button mat-stroked-button (click)="accordion?.closeAll()">طي الكل</button>
+                </div>
+                <mat-accordion class="example-headers-align" multi>
+                  <mat-expansion-panel expanded>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        الفواتير
+                      </mat-panel-title>
+                     
+                    </mat-expansion-panel-header>
+                
+                    <mat-form-field appearance="fill">
+                      <input matInput>
+                    </mat-form-field>
+                
+                    <mat-form-field appearance="fill">
+                      <input matInput type="number" min="1">
+                    </mat-form-field>
+                
+                  </mat-expansion-panel>
+                  <mat-expansion-panel >
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                      Custom View
+                      </mat-panel-title>
+                      
+                    </mat-expansion-panel-header>
+                
+                    <mat-form-field appearance="fill">
+                      <input matInput>
+                    </mat-form-field>
+                  </mat-expansion-panel>
+                
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Invoice Company View
+                      </mat-panel-title>
+                      
+                    </mat-expansion-panel-header>
+                
+                    <mat-form-field appearance="fill">
+                      <input matInput>
+                    </mat-form-field>
+                  </mat-expansion-panel>
+
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Invoice Line Company View
+                      </mat-panel-title>
+                     
+                    </mat-expansion-panel-header>
+                
+                    <mat-form-field appearance="fill">
+                      <input matInput>
+                    </mat-form-field>
+                  </mat-expansion-panel>
+                </mat-accordion>
+
+                
+                <button mat-stroked-button class="btn-info-size">ارسال بيانات</button>
+              </div>
+              
+          </div>
+    </div>
+</div>

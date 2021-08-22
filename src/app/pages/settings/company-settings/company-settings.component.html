@@ -1,0 +1,76 @@
+<div class="contents">
+  <div class="glasses">
+    <div class="content-header">
+      <div class="header">
+        <h1>
+          <mat-icon>settings</mat-icon>الإعدادات
+        </h1>
+      </div>
+
+      <div class="views">
+
+
+        <form>
+
+          <div class="row ">
+
+            <div class="input-setting col">
+              <mat-form-field appearance="outline" class="input-layout-width">
+                <mat-label>اختر الشركة</mat-label>
+                <mat-select [(ngModel)]="selectedValue" name="food" required>
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-hint>قم باختيار الشركة من القائمة</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="input-setting col">
+              <mat-form-field appearance="outline" class="input-layout-width">
+                <mat-label>grant id</mat-label>
+                <input matInput placeholder="برجاء ادخال grant id" required>
+                <mat-icon matSuffix>edit</mat-icon>
+                <mat-hint>please enter grant id</mat-hint>
+              </mat-form-field>
+            </div>
+
+          </div>
+
+          <div class="row ">
+
+            <div class="input-setting col">
+              <mat-form-field appearance="outline" class="input-layout-width">
+                <mat-label>client id</mat-label>
+                <input matInput placeholder="برجاء ادخال client id" required>
+                <mat-icon matSuffix>edit</mat-icon>
+                <mat-hint>please enter client id</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="input-setting col">
+              <mat-form-field appearance="outline" class="input-layout-width">
+                <mat-label>secret id</mat-label>
+                <input matInput placeholder="برجاء ادخال secret id" required>
+                <mat-icon matSuffix>edit</mat-icon>
+                <mat-hint>please enter secret id</mat-hint>
+              </mat-form-field>
+            </div>
+
+          </div>
+
+          <div class="rows">
+            <button mat-stroked-button class="btn-info-size">اضافة البيانات</button>
+            <button mat-stroked-button class="btn-info-size">تعديل البيانات</button>
+            <button mat-stroked-button color="accent" class="btn-info-size">تفريغ الحقول</button>
+          </div>
+
+        </form>
+
+
+      </div>
+
+
+    </div>
+  </div>
+</div>

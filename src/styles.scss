@@ -1,8 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { 
-    margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
-    height: 100vh;
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: 100vh;
+}
+div.content-header {
+  border-right: 7px solid #eaafc8;
+  height: 60px;
+  margin: 20px 30px;
+  border-radius: 5px;
+  background: -webkit-linear-gradient(to right, #f2dde6, #a998d9);
+  background: linear-gradient(to right, #f2dde6, #a998d9);
+  box-shadow: 0 10px 20px #ddd;
+
+  & .header {
+    display: flex;
+    align-items: center;
+    margin: 0 50px;
+    padding: 0;
+    color: white;
+    width: 100%;
+    height: 100%;
+    & h1 {
+      margin-bottom: 0;
+    }
+    & mat-icon {
+        font-size: 25px;
+        margin-left: 15px;
+    }
+  }
+
+  & .views {
+    margin-top: 20px;
+    height: 80vh;
+    overflow: auto;
+  }
+}
+
+div.glasses {
+  margin: 0 20px;
+  height: 100vh;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  background: inherit;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    background: inherit;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+    filter: blur(10px);
+    margin: -20px;
+  }
+
+}
+
+a.page-link-info i {
+  color: #eb639c;
+}
+
+.views::-webkit-scrollbar, .content-page::-webkit-scrollbar {
+  width: 16px;
+}
+
+.views::-webkit-scrollbar-track, .content-page::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+.views::-webkit-scrollbar-thumb, .content-page::-webkit-scrollbar-thumb {
+  background-color: #afafaf;
+  border-radius: 100px;
+}
+
+mat-form-field.input-layout-width {
+  width: 100%;
+}
+
+div.row {
+  margin-top: 10px;
+}
+
+button.btn-info-size {
+  font-size: 20px;
+  margin: 20px 0 0 10px;
 }
