@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { LoginComponent } from './pages/loginpage/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -36,9 +38,9 @@ import { CompanySettingsComponent } from './pages/settings/company-settings/comp
     CompanySettingsComponent
   ],
   imports: [
-    BrowserModule, MatButtonModule, MatIconModule, FormsModule, ReactiveFormsModule, MatDialogModule,
+    BrowserModule, MatButtonModule, MatIconModule, FormsModule, ReactiveFormsModule, MatDialogModule, HttpClientModule,
     AppRoutingModule, MatToolbarModule, MatMenuModule, MatStepperModule, MatFormFieldModule, MatSelectModule,
-    BrowserAnimationsModule, MatSidenavModule, MatInputModule, MatExpansionModule
+    BrowserAnimationsModule, MatSidenavModule, MatInputModule, MatExpansionModule, MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

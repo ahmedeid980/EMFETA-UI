@@ -8,10 +8,25 @@
               <div class="views">
 
 
+                <div class="col" style="margin: 20px 0;">
+                  <form [formGroup]="secondFormGroup" style="text-align: center;">
+                    <mat-form-field appearance="outline" class="input-layout-width-50">
+                      <mat-label>اختر الشركة</mat-label>
+                      <mat-select [(ngModel)]="selectedValue" name="food" formControlName="companyList">
+                        <mat-option *ngFor="let companies of usercompanies" [value]="companies">
+                          {{companies.companyName}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-hint>قم باختيار الشركة من القائمة</mat-hint>
+                    </mat-form-field>
+                  </form>
+                </div>
+
+
 
                 <div class="example-action-buttons">
-                  <button mat-stroked-button (click)="accordion?.openAll()" style="margin-left: 10px;">عرض الكل</button>
-                  <button mat-stroked-button (click)="accordion?.closeAll()">طي الكل</button>
+                  <button mat-raised-button (click)="accordion?.openAll()" style="margin-left: 10px;">عرض الكل</button>
+                  <button mat-raised-button (click)="accordion?.closeAll()">طي الكل</button>
                 </div>
                 <mat-accordion class="example-headers-align" multi>
                   <mat-expansion-panel expanded>
@@ -72,7 +87,7 @@
                 </mat-accordion>
 
                 
-                <button mat-stroked-button class="btn-info-size">ارسال بيانات</button>
+                <button mat-raised-button color="primary" class="btn-info-size">ارسال بيانات</button>
               </div>
               
           </div>

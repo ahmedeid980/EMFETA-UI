@@ -7,6 +7,7 @@ import { LoginComponent } from './pages/loginpage/login/login.component';
 import { CompanySettingsComponent } from './pages/settings/company-settings/company-settings.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/EMFETA/login', pathMatch: 'full' },
   {
     path: '',
     component: PageLayoutComponent,

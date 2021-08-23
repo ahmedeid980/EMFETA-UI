@@ -90,6 +90,10 @@ mat-form-field.input-layout-width {
   width: 100%;
 }
 
+mat-form-field.input-layout-width-50 {
+  width: 50%;
+}
+
 div.row {
   margin-top: 10px;
 }
@@ -97,4 +101,31 @@ div.row {
 button.btn-info-size {
   font-size: 20px;
   margin: 20px 0 0 10px;
+}
+
+.success-toaster {
+  background-color: #47b947;
+  color: white;
+  font-weight: bold;
+  & .mat-button-wrapper {
+    color: white;
+  }
+}
+
+.warning-toaster {
+  background-color: #d89f4a;
+  color: white;
+  font-weight: bold;
+  & .mat-button-wrapper {
+    color: white;
+  }
+}
+
+.danger-toaster {
+  background-color: #d45555;
+  color: white;
+  font-weight: bold;
+  & .mat-button-wrapper {
+    color: white;
+  }
 }
