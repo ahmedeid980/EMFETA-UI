@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CommercialTransactionGuard } from './guards/commercialTransactionGuard/commercial-transaction.guard';
+import { CompanySettingGuard } from './guards/companySettingGuard/company-setting.guard';
+import { LoginGuard } from './guards/loginGuard/login.guard';
 import { LoginLayoutComponent } from './layout/loginLayout/login-layout/login-layout.component';
 import { PageLayoutComponent } from './layout/pagesLayout/page-layout/page-layout.component';
 import { CommercialTransactionsComponent } from './pages/commercialTransactions/commercial-transactions/commercial-transactions.component';
@@ -14,11 +17,13 @@ const routes: Routes = [
     children: [
       {
         path: 'EMFETA/commercial-transactions',
-        component: CommercialTransactionsComponent
+        component: CommercialTransactionsComponent,
+        canActivate: [CommercialTransactionGuard]
       },
       {
         path: 'EMFETA/company-settings',
-        component: CompanySettingsComponent
+        component: CompanySettingsComponent,
+        canActivate: [CompanySettingGuard]
       }
     ],
   },
@@ -28,7 +33,8 @@ const routes: Routes = [
     children: [
       {
         path: 'EMFETA/login',
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate: [LoginGuard]
       }
     ]
   }

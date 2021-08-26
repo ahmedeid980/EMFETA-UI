@@ -32,8 +32,9 @@ export class PageLayoutComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.dialogResult = result;
       if(this.dialogResult) {
-        localStorage.clear();
         this.router.navigate(['/EMFETA/login']);
+        localStorage.clear();
+        
       }
     });
   }
