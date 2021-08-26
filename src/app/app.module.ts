@@ -20,6 +20,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTableModule} from '@angular/material/table';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { LoginComponent } from './pages/loginpage/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -39,8 +42,9 @@ import { CompanySettingsComponent } from './pages/settings/company-settings/comp
   ],
   imports: [
     BrowserModule, MatButtonModule, MatIconModule, FormsModule, ReactiveFormsModule, MatDialogModule, HttpClientModule,
-    AppRoutingModule, MatToolbarModule, MatMenuModule, MatStepperModule, MatFormFieldModule, MatSelectModule,
-    BrowserAnimationsModule, MatSidenavModule, MatInputModule, MatExpansionModule, MatSnackBarModule
+    AppRoutingModule, MatToolbarModule, MatMenuModule, MatStepperModule, MatFormFieldModule, MatSelectModule, MatTableModule,
+    BrowserAnimationsModule, MatSidenavModule, MatInputModule, MatExpansionModule, MatSnackBarModule, MatDividerModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

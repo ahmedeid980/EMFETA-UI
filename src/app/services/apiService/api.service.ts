@@ -92,4 +92,81 @@ export class ApiService {
     );
   }
 
+  getSettingList(token: string) {
+
+    const headerDict = {
+      'Authorization': 'EMFAHM '+token,
+    }
+
+    const requestOptions = {
+      headers: new HttpHeaders(headerDict),
+    };
+    
+    return this.http.post(this.URL_APIs+'/getSettingList', null, requestOptions).pipe(
+      catchError(error => {
+        let errorMsg: string = '';
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message}`;
+        } else {
+          errorMsg = this.getServerErrorMessage(error);
+        }
+        return errorMsg;
+      })
+    );
+  }
+
+  //
+  getAdmAppUserCompanyByUserName$companyId(userName: string, companyId: number, token: string) {
+
+    const headerDict = {
+      'Authorization': 'EMFAHM '+token,
+    }
+
+    const requestOptions = {
+      headers: new HttpHeaders(headerDict),
+    };
+    
+    return this.http.post(this.URL_APIs+'/getAdmAppUserCompanyByUserName-companyId/'+userName+"/"+companyId, null, requestOptions).pipe(
+      catchError(error => {
+        let errorMsg: string = '';
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message}`;
+        } else {
+          errorMsg = this.getServerErrorMessage(error);
+        }
+        return errorMsg;
+      })
+    );
+  }
+
+  /**
+   * 
+   * 
+   * @param setting object 
+   * @param token 
+   * @returns 
+   */
+   addOrUpdateSettingCompany(setting: any, token: string) {
+
+    const headerDict = {
+      'Authorization': 'EMFAHM '+token,
+    }
+
+    const requestOptions = {
+      headers: new HttpHeaders(headerDict),
+    };
+    
+    return this.http.post(this.URL_APIs+'/add-Or-UpdateSettingCompany', setting, requestOptions).pipe(
+      catchError(error => {
+        let errorMsg: string = '';
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message}`;
+        } else {
+          errorMsg = this.getServerErrorMessage(error);
+        }
+        return errorMsg;
+      })
+    );
+  }
+
 }

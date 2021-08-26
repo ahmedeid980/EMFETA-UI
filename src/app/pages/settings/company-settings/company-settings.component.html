@@ -10,16 +10,17 @@
       <div class="views">
 
 
-        <form>
+        <form [formGroup]='formGroup'>
 
           <div class="row ">
 
             <div class="input-setting col">
               <mat-form-field appearance="outline" class="input-layout-width">
                 <mat-label>اختر الشركة</mat-label>
-                <mat-select [(ngModel)]="selectedValue" name="food" required>
-                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
+                <mat-select [(ngModel)]="selectedValue" name="setting" (selectionChange)="onChangeItem($event)" 
+                 formControlName="companyObject">
+                  <mat-option *ngFor="let companies of usercompanies" [value]="companies">
+                    {{companies.companyName}}
                   </mat-option>
                 </mat-select>
                 <mat-hint>قم باختيار الشركة من القائمة</mat-hint>
@@ -29,7 +30,7 @@
             <div class="input-setting col">
               <mat-form-field appearance="outline" class="input-layout-width">
                 <mat-label>grant id</mat-label>
-                <input matInput placeholder="برجاء ادخال grant id" required>
+                <input matInput placeholder="برجاء ادخال grant id" required formControlName="grantId">
                 <mat-icon matSuffix>edit</mat-icon>
                 <mat-hint>please enter grant id</mat-hint>
               </mat-form-field>
@@ -42,7 +43,7 @@
             <div class="input-setting col">
               <mat-form-field appearance="outline" class="input-layout-width">
                 <mat-label>client id</mat-label>
-                <input matInput placeholder="برجاء ادخال client id" required>
+                <input matInput placeholder="برجاء ادخال client id" required formControlName="clientId">
                 <mat-icon matSuffix>edit</mat-icon>
                 <mat-hint>please enter client id</mat-hint>
               </mat-form-field>
@@ -51,7 +52,7 @@
             <div class="input-setting col">
               <mat-form-field appearance="outline" class="input-layout-width">
                 <mat-label>secret id</mat-label>
-                <input matInput placeholder="برجاء ادخال secret id" required>
+                <input matInput placeholder="برجاء ادخال secret id" required formControlName="secretId">
                 <mat-icon matSuffix>edit</mat-icon>
                 <mat-hint>please enter secret id</mat-hint>
               </mat-form-field>
@@ -60,15 +61,61 @@
           </div>
 
           <div class="rows">
-            <button mat-raised-button class="btn-info-size">اضافة البيانات</button>
-            <button mat-raised-button class="btn-info-size">تعديل البيانات</button>
-            <button mat-raised-button color="accent" class="btn-info-size">تفريغ الحقول</button>
+            <button mat-raised-button class="btn-info-size" (click)='addSettingCompany()'
+              *ngIf='!addOrUdateStatus'>اضافة البيانات</button>
+            <button mat-raised-button class="btn-info-size" *ngIf='addOrUdateStatus'
+              (click)='updateSettingCompany()'>تعديل البيانات</button>
+            <button mat-raised-button color="accent" class="btn-info-size" (click)='resetComponentFields()'>تفريغ الحقول</button>
           </div>
 
         </form>
 
+          <mat-divider style="margin-top: 20px;"></mat-divider>
+
+        <div class="table-data-EMFETA">
+
+          <div class="search">
+            <mat-form-field appearance="outline">
+              <mat-label>بحث</mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="بحث" #input>
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+          </div>
+
+          <table mat-table [dataSource]="settingListOfTable" class="mat-elevation-z8">
+  
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="companyName">
+              <th mat-header-cell class="table-head" *matHeaderCellDef> أسم الشركة </th>
+              <td mat-cell *matCellDef="let element" style="font-weight: bold;"> {{element.companyName}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="edit">
+              <th mat-header-cell class="table-head" *matHeaderCellDef> تعديل </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="primary" (click)='getForUpdate(element)'>
+                  <mat-icon>update</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator dir="ltr" [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons >
+          </mat-paginator>
+          
+          
+        </div>
 
       </div>
+
+      
 
 
     </div>

@@ -129,3 +129,17 @@ button.btn-info-size {
     color: white;
   }
 }
+
+div.table-data-EMFETA {
+  margin-top: 10px;
+}
+
+table {
+  width: 100%;
+
+  & th.table-head {
+    color: rgb(56, 115, 182);
+    font-size: 25px;
+    font-weight: bolder;
+  }
+}
