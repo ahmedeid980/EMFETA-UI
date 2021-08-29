@@ -123,7 +123,10 @@ export class CommercialTransactionsComponent implements OnInit {
    * send data to ERP system ...
    */
   sendData() {
-    console.log(this.selection.selected);
+    if(this.selection.selected.length > 0)
+      console.log(this.selection.selected);
+    else
+      this.toaster.openSnackBar('يجب اختيار فاتورة على الاقل', 'warning-toaster');
   }
 
 }
