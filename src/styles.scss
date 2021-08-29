@@ -1,14 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
+@font-face {
+  font-family: cairo;
+  src: url(./assets/fonts/Cairo-Bold.ttf) format("truetype");
+  src: url(./assets/fonts/Cairo-Black.ttf) format("truetype");
+  src: url(./assets/fonts/Cairo-ExtraLight.ttf) format("truetype");
+  src: url(./assets/fonts/Cairo-Light.ttf) format("truetype");
+  src: url(./assets/fonts/Cairo-Regular.ttf) format("truetype");
+}
 html,
 body {
   height: 100%;
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: cairo, arial, sans-serif;
   height: 100vh;
 }
+
+.font {
+  font-family: cairo, arial, sans-serif;
+}
+
 div.content-header {
   border-right: 7px solid #eaafc8;
   height: 60px;
@@ -134,12 +147,17 @@ div.table-data-EMFETA {
   margin-top: 10px;
 }
 
+mat-panel-title.table-head {
+  color: rgb(56, 115, 182);
+  font-size: 25px;
+  font-weight: bolder;
+}
+
 table {
   width: 100%;
 
   & th.table-head {
     color: rgb(56, 115, 182);
-    font-size: 25px;
-    font-weight: bolder;
+    font-size: 20px !important;
   }
 }

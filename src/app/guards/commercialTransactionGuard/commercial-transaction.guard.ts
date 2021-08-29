@@ -9,7 +9,7 @@ import { StoreDataService } from 'src/app/services/storage/store-data.service';
 export class CommercialTransactionGuard implements CanActivate {
 
   user: any;
-
+  companyObject: any;
   constructor(private store: StoreDataService, private router: Router){
   }
 
@@ -17,7 +17,8 @@ export class CommercialTransactionGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       this.user = this.store.getStoreElement('EMFETA-U-O');
-      if(!this.user) {
+      this.companyObject = this.store.getStoreElement('EMFETA-C-D');
+      if(!this.user || !this.companyObject) {
         localStorage.clear();
         this.router.navigate(['/EMFETA/login']);
 

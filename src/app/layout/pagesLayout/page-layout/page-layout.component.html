@@ -1,16 +1,24 @@
 <div class="side-nav">
   <mat-drawer-container dir="rtl" class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side" opened>
-      <div class="nav-menu">
+      <div class="nav-menu font">
         <ul>
           <!-- pages here side nav -->
+          <div class="div-side-head-title">
+            <span class="head-nav-title">معاملات حسابية</span>
+            <span class="side-line"></span>
+          </div>
           <li routerLinkActive="active">
             <a [routerLink]='["/EMFETA/commercial-transactions"]' class="page-link-info">
               <i class="fa fa-home"></i>المعاملات الحسابية</a></li>
               
+              <div class="div-side-head-title">
+                <span class="head-nav-title">اعدادات النظام</span>
+                <span class="side-line"></span>
+              </div>
           <li routerLinkActive="active">
             <a [routerLink]='["EMFETA/company-settings"]' class="page-link-info">
-              <i class="fa fa-cogs"></i>الإعدادات</a></li>
+              <i class="fa fa-cogs"></i>تفعيل الشركة</a></li>
           
         </ul>
       </div>
@@ -18,9 +26,9 @@
     </mat-drawer>
 
     <!-- tool bar -->
-    <div class="example-sidenav-content">
+    <div class="example-sidenav-content font">
 
-      <mat-toolbar>
+      <mat-toolbar class="font">
         <button mat-icon-button class="example-icon" (click)="drawer.toggle()"
           aria-label="Example icon-button with menu icon">
           <mat-icon>menu</mat-icon>
@@ -40,11 +48,16 @@
           <mat-icon>more_vert</mat-icon>
         </button>
 
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)='openDialog()'>
-            <mat-icon>power_settings_new</mat-icon>
+        <mat-menu #menu="matMenu" class="font ">
+          <button mat-menu-item (click)='openDialog()' class="font">
+            <mat-icon >power_settings_new</mat-icon>
             <span>تسجيل الخروج</span>
           </button>
+<!-- 
+          <button mat-menu-item (click)='openDialog()' class="font">
+            <mat-icon >power_settings_new</mat-icon>
+            <span>تسجيل تسجيل تسجيل الخروج</span>
+          </button> -->
 
         </mat-menu>
 

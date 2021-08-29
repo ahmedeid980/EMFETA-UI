@@ -2,12 +2,13 @@
   <div class="glasses">
     <div class="content-header">
       <div class="header">
-        <h1>
-          <mat-icon>settings</mat-icon>الإعدادات
+        <h1 style="display: flex; align-items: center;">
+          <mat-icon>settings</mat-icon>
+          <span class="font">تفعيل الشركة</span>
         </h1>
       </div>
 
-      <div class="views">
+      <div class="views" style="overflow: hidden;">
 
 
         <form [formGroup]='formGroup'>
@@ -15,7 +16,7 @@
           <div class="row ">
 
             <div class="input-setting col">
-              <mat-form-field appearance="outline" class="input-layout-width">
+              <mat-form-field appearance="outline" class="input-layout-width font">
                 <mat-label>اختر الشركة</mat-label>
                 <mat-select [(ngModel)]="selectedValue" name="setting" (selectionChange)="onChangeItem($event)" 
                  formControlName="companyObject">
@@ -28,7 +29,7 @@
             </div>
 
             <div class="input-setting col">
-              <mat-form-field appearance="outline" class="input-layout-width">
+              <mat-form-field appearance="outline" class="input-layout-width font">
                 <mat-label>grant id</mat-label>
                 <input matInput placeholder="برجاء ادخال grant id" required formControlName="grantId">
                 <mat-icon matSuffix>edit</mat-icon>
@@ -41,7 +42,7 @@
           <div class="row ">
 
             <div class="input-setting col">
-              <mat-form-field appearance="outline" class="input-layout-width">
+              <mat-form-field appearance="outline" class="input-layout-width font">
                 <mat-label>client id</mat-label>
                 <input matInput placeholder="برجاء ادخال client id" required formControlName="clientId">
                 <mat-icon matSuffix>edit</mat-icon>
@@ -50,7 +51,7 @@
             </div>
 
             <div class="input-setting col">
-              <mat-form-field appearance="outline" class="input-layout-width">
+              <mat-form-field appearance="outline" class="input-layout-width font">
                 <mat-label>secret id</mat-label>
                 <input matInput placeholder="برجاء ادخال secret id" required formControlName="secretId">
                 <mat-icon matSuffix>edit</mat-icon>
@@ -60,29 +61,29 @@
 
           </div>
 
-          <div class="rows">
-            <button mat-raised-button class="btn-info-size" (click)='addSettingCompany()'
+          <div class="rows font">
+            <button mat-raised-button class="btn-info-size font" (click)='addSettingCompany()'
               *ngIf='!addOrUdateStatus'>اضافة البيانات</button>
-            <button mat-raised-button class="btn-info-size" *ngIf='addOrUdateStatus'
+            <button mat-raised-button class="btn-info-size font" *ngIf='addOrUdateStatus'
               (click)='updateSettingCompany()'>تعديل البيانات</button>
-            <button mat-raised-button color="accent" class="btn-info-size" (click)='resetComponentFields()'>تفريغ الحقول</button>
+            <button mat-raised-button color="accent" class="btn-info-size font" (click)='resetComponentFields()'>تفريغ الحقول</button>
           </div>
 
         </form>
 
           <mat-divider style="margin-top: 20px;"></mat-divider>
 
-        <div class="table-data-EMFETA">
+        <div class="table-data-EMFETA font">
 
           <div class="search">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="font">
               <mat-label>بحث</mat-label>
               <input matInput (keyup)="applyFilter($event)" placeholder="بحث" #input>
               <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
           </div>
 
-          <table mat-table [dataSource]="settingListOfTable" class="mat-elevation-z8">
+          <table mat-table [dataSource]="settingListOfTable" class="mat-elevation-z8 font">
   
             <!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->

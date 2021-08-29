@@ -57,11 +57,13 @@ export class LoginComponent implements OnInit {
   }
 
   selectedValue?: string;
-  selectedCar?: string;
 
   tOCommercialTransactions() {
-    if(this.secondFormGroup.valid)
+    if(this.secondFormGroup.valid) {
+      this.store.storeElement('EMFETA-C-D', this.secondFormGroup.value);
       this.router.navigate(['/EMFETA/commercial-transactions']);
+    }
+    
   }
 
 }

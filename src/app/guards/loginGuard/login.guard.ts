@@ -9,6 +9,7 @@ import { StoreDataService } from 'src/app/services/storage/store-data.service';
 export class LoginGuard implements CanActivate {
 
   user: any;
+  companyObject: any;
 
   constructor(private store: StoreDataService, private router: Router){
   }
@@ -17,7 +18,8 @@ export class LoginGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       this.user = this.store.getStoreElement('EMFETA-U-O');
-      if(this.user) {
+      this.companyObject = this.store.getStoreElement('EMFETA-C-D');
+      if(this.user  && this.companyObject) {
         this.router.navigate(['/EMFETA/commercial-transactions']);
         return false;
       } else {

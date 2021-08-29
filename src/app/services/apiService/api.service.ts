@@ -169,4 +169,27 @@ export class ApiService {
     );
   }
 
+  getInvoiceResultCompanyByCompanyId(companyId: number, token: string) {
+
+    const headerDict = {
+      'Authorization': 'EMFAHM '+token,
+    }
+
+    const requestOptions = {
+      headers: new HttpHeaders(headerDict),
+    };
+    
+    return this.http.post(this.URL_APIs+'/getInvoiceResultCompanyByCompanyId/'+companyId, null, requestOptions).pipe(
+      catchError(error => {
+        let errorMsg: string = '';
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message}`;
+        } else {
+          errorMsg = this.getServerErrorMessage(error);
+        }
+        return errorMsg;
+      })
+    );
+  }
+
 }

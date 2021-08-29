@@ -17,6 +17,7 @@ export class CommercialTransactionsComponent implements OnInit {
 
   user: any;
   token: any;
+  companyObject: any;
   usercompanies: any;
   selectedValue?: string;
   selectedCar?: string;
@@ -38,7 +39,23 @@ export class CommercialTransactionsComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.store.getStoreElement('EMFETA-U-O');
     this.token = this.store.getStoreElement('EMFETA-U-T');
+    this.companyObject = this.store.getStoreElement('EMFETA-C-D');
+    this.getInvoiceResultCompanyByCompanyId(this.companyObject.companyList.companyId);
     this.getUserCompanies(this.user.userName, this.token);
+  }
+
+  getInvoiceResultCompanyByCompanyId( companyId: number ) {
+
+    this.api.getInvoiceResultCompanyByCompanyId(companyId, this.token).subscribe( (jwtResponse: any) => {
+    }, error => {
+      this.toaster.openSnackBar('حدث خطأ في النظام', 'danger-toaster');
+    });
+
+  }
+
+  // change informations
+  onChangeItem(newValue: any) {
+    this.getInvoiceResultCompanyByCompanyId(newValue.value.companyId);
   }
 
 }

@@ -1,18 +1,19 @@
-<div class="contents">
+<div class="contents font">
     <div class="glasses">
         <div class="content-header">
-            <div class="header">
+            <div class="header ">
                 
-              <h1><mat-icon>home</mat-icon>المعاملات التجارية</h1>
+              <h1 class="font" style="display: flex; align-items: center;"><mat-icon>home</mat-icon><span class="font">المعاملات التجارية</span></h1>
             </div>
               <div class="views">
 
 
                 <div class="col" style="margin: 20px 0;">
                   <form [formGroup]="secondFormGroup" style="text-align: center;">
-                    <mat-form-field appearance="outline" class="input-layout-width-50">
+                    <mat-form-field appearance="outline" class="input-layout-width-50 font">
                       <mat-label>اختر الشركة</mat-label>
-                      <mat-select [(ngModel)]="selectedValue" name="food" formControlName="companyList">
+                      <mat-select [(ngModel)]="selectedValue" name="setting" (selectionChange)="onChangeItem($event)" 
+                       formControlName="companyList">
                         <mat-option *ngFor="let companies of usercompanies" [value]="companies">
                           {{companies.companyName}}
                         </mat-option>
@@ -25,13 +26,14 @@
 
 
                 <div class="example-action-buttons">
-                  <button mat-raised-button (click)="accordion?.openAll()" style="margin-left: 10px;">عرض الكل</button>
-                  <button mat-raised-button (click)="accordion?.closeAll()">طي الكل</button>
+                  <button mat-raised-button (click)="accordion?.openAll()" style="margin-left: 10px;"
+                   class="font">عرض الكل</button>
+                  <button class="font" mat-raised-button (click)="accordion?.closeAll()">طي الكل</button>
                 </div>
-                <mat-accordion class="example-headers-align" multi>
+                <mat-accordion class="example-headers-align font" multi>
                   <mat-expansion-panel expanded>
                     <mat-expansion-panel-header>
-                      <mat-panel-title>
+                      <mat-panel-title class="table-head " >
                         الفواتير
                       </mat-panel-title>
                      
@@ -48,7 +50,7 @@
                   </mat-expansion-panel>
                   <mat-expansion-panel >
                     <mat-expansion-panel-header>
-                      <mat-panel-title>
+                      <mat-panel-title class="table-head font">
                       Custom View
                       </mat-panel-title>
                       
@@ -61,7 +63,7 @@
                 
                   <mat-expansion-panel>
                     <mat-expansion-panel-header>
-                      <mat-panel-title>
+                      <mat-panel-title class="table-head font">
                         Invoice Company View
                       </mat-panel-title>
                       
@@ -74,7 +76,7 @@
 
                   <mat-expansion-panel>
                     <mat-expansion-panel-header>
-                      <mat-panel-title>
+                      <mat-panel-title class="table-head font">
                         Invoice Line Company View
                       </mat-panel-title>
                      
@@ -87,7 +89,7 @@
                 </mat-accordion>
 
                 
-                <button mat-raised-button color="primary" class="btn-info-size">ارسال بيانات</button>
+                <button mat-raised-button color="primary" class="btn-info-size font">ارسال بيانات</button>
               </div>
               
           </div>

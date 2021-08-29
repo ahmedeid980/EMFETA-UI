@@ -1,10 +1,10 @@
-<mat-stepper linear #stepper dir="rtl">
+<mat-stepper linear #stepper dir="rtl" class="font">
     <mat-step [stepControl]="formGroup">
         <form class="form-signin" [formGroup]="formGroup">
             <ng-template matStepLabel>الخطوة الاولى تسجيل الدخول</ng-template>
             <div class="wrapper">
 
-                <h2 class="form-signin-heading">تسجيل الدخول</h2>
+                <h2 class="form-signin-heading font">تسجيل الدخول</h2>
                 <input type="text" class="form-control" name="username" placeholder="أسم المستخدم" required="true"
                     autofocus="true" formControlName="username">
                 <input type="password" class="form-control" name="password" formControlName="password"
@@ -16,12 +16,13 @@
 
         </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
+    <mat-step [stepControl]="secondFormGroup" class="font">
         <form [formGroup]="secondFormGroup" style="text-align: center; margin-top: 5%;">
             <ng-template matStepLabel>الخطوة الثانية اختر الشركة</ng-template>
-            <mat-form-field appearance="outline" class="input-layout-width-50">
+            <mat-form-field appearance="outline" class="input-layout-width-50 font">
                 <mat-label>اختر الشركة</mat-label>
-                <mat-select [(ngModel)]="selectedValue" name="food" formControlName="companyList" required>
+                <mat-select [(ngModel)]="selectedValue" name="setting" 
+                formControlName="companyList" required>
                   <mat-option *ngFor="let companies of userComanyList" [value]="companies">
                     {{companies.companyName}}
                   </mat-option>
@@ -29,7 +30,7 @@
                 <mat-hint>قم باختيار الشركة من القائمة</mat-hint>
               </mat-form-field>
             <div>
-                <button mat-raised-button class="btn-info-size" (click)='tOCommercialTransactions()' >عرض المعاملات التجارية للشركة</button>
+                <button mat-raised-button class="btn-info-size font" (click)='tOCommercialTransactions()' >عرض المعاملات التجارية للشركة</button>
             </div>
         </form>
     </mat-step>
