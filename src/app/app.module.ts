@@ -23,6 +23,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { LoginComponent } from './pages/loginpage/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -44,7 +45,7 @@ import { CompanySettingsComponent } from './pages/settings/company-settings/comp
     BrowserModule, MatButtonModule, MatIconModule, FormsModule, ReactiveFormsModule, MatDialogModule, HttpClientModule,
     AppRoutingModule, MatToolbarModule, MatMenuModule, MatStepperModule, MatFormFieldModule, MatSelectModule, MatTableModule,
     BrowserAnimationsModule, MatSidenavModule, MatInputModule, MatExpansionModule, MatSnackBarModule, MatDividerModule,
-    MatPaginatorModule
+    MatPaginatorModule, MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

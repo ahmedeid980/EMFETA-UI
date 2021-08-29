@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
 
   tOCommercialTransactions() {
     if(this.secondFormGroup.valid) {
-      this.store.storeElement('EMFETA-C-D', this.secondFormGroup.value);
+      this.store.storeElement('EMFETA-C-D', this.secondFormGroup.value.companyList);
       this.router.navigate(['/EMFETA/commercial-transactions']);
     }
     

@@ -86,7 +86,7 @@ a.page-link-info i {
 }
 
 .views::-webkit-scrollbar, .content-page::-webkit-scrollbar {
-  width: 16px;
+  width: 7px;
 }
 
 .views::-webkit-scrollbar-track, .content-page::-webkit-scrollbar-track {
@@ -95,7 +95,7 @@ a.page-link-info i {
 }
 
 .views::-webkit-scrollbar-thumb, .content-page::-webkit-scrollbar-thumb {
-  background-color: #afafaf;
+  background-color: #868686;
   border-radius: 100px;
 }
 
@@ -160,4 +160,9 @@ table {
     color: rgb(56, 115, 182);
     font-size: 20px !important;
   }
+}
+
+span.info-class {
+  color: #d45555;
+  font-weight: bolder;
 }

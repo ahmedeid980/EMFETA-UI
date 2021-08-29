@@ -39,14 +39,79 @@
                      
                     </mat-expansion-panel-header>
                 
-                    <mat-form-field appearance="fill">
-                      <input matInput>
-                    </mat-form-field>
-                
-                    <mat-form-field appearance="fill">
-                      <input matInput type="number" min="1">
-                    </mat-form-field>
-                
+                      
+                      <!-- invoice data here ========================================== -->
+
+                      <div class="table-data-EMFETA font" *ngIf='viewInfoStatus'>
+
+                        <div class="search">
+                          <mat-form-field appearance="outline" class="font">
+                            <mat-label>بحث</mat-label>
+                            <input matInput (keyup)="applyFilter($event)" placeholder="بحث" #input>
+                            <mat-icon matSuffix>search</mat-icon>
+                          </mat-form-field>
+                        </div>
+
+                        <table mat-table [dataSource]="resultCompanyData" class="mat-elevation-z8 font">
+
+                          <!-- Checkbox Column -->
+                          <ng-container matColumnDef="select">
+                            <th mat-header-cell *matHeaderCellDef>
+                              <mat-checkbox (change)="$event ? masterToggle() : null"
+                                            [checked]="selection.hasValue() && isAllSelected()"
+                                            [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                            [aria-label]="checkboxLabel()">
+                              </mat-checkbox>
+                            </th>
+                            <td mat-cell *matCellDef="let row">
+                              <mat-checkbox (click)="$event.stopPropagation()"
+                                            (change)="$event ? selection?.toggle(row) : null"
+                                            [checked]="selection.isSelected(row)"
+                                            [aria-label]="checkboxLabel(row)">
+                              </mat-checkbox>
+                            </td>
+                          </ng-container>
+                        
+                          <!-- Position Column -->
+                          <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef class="table-head"> رقم الفاتورة </th>
+                            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                          </ng-container>
+                        
+                          <!-- Name Column -->
+                          <ng-container matColumnDef="state">
+                            <th mat-header-cell *matHeaderCellDef class="table-head"> حالة الفاتورة </th>
+                            <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+                          </ng-container>
+                        
+                          <!-- Weight Column -->
+                          <ng-container matColumnDef="errors">
+                            <th mat-header-cell *matHeaderCellDef class="table-head"> سبب الرفض </th>
+                            <td mat-cell *matCellDef="let element"> {{element.errors}} </td>
+                          </ng-container>
+                        
+                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                              (click)="selection.toggle(row)">
+                          </tr>
+                        </table>
+                        <mat-paginator dir="ltr" [pageSizeOptions]="[5, 10, 20]"
+                              showFirstLastButtons >
+                        </mat-paginator>
+
+                        </div>
+
+                        <div class="no-informations" *ngIf='!viewInfoStatus' style="text-align: center;">
+                          <h2> <span class="font info-class" >لا يوجد بيانات</span> </h2>
+                        </div>
+
+                        
+                      <!-- Copyright 2021 Google LLC. All Rights Reserved.
+                          Use of this source code is governed by an MIT-style license that
+                          can be found in the LICENSE file at http://angular.io/license -->
+
+                      <!-- end invoice data here ========================================== -->
+
                   </mat-expansion-panel>
                   <mat-expansion-panel >
                     <mat-expansion-panel-header>
@@ -89,7 +154,7 @@
                 </mat-accordion>
 
                 
-                <button mat-raised-button color="primary" class="btn-info-size font">ارسال بيانات</button>
+                <button mat-raised-button color="primary" (click)='sendData()' class="btn-info-size font">ارسال بيانات</button>
               </div>
               
           </div>
