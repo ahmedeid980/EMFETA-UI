@@ -95,11 +95,12 @@
                               (click)="selection.toggle(row)">
                           </tr>
                         </table>
-                        <mat-paginator dir="ltr" [pageSizeOptions]="[5, 10, 20]"
-                              showFirstLastButtons >
-                        </mat-paginator>
+                        
 
                         </div>
+                        <mat-paginator dir="ltr" [hidden]='!viewInfoStatus' [pageSizeOptions]="[5, 10, 20]"
+                              showFirstLastButtons >
+                        </mat-paginator>
 
                         <div class="no-informations" *ngIf='!viewInfoStatus' style="text-align: center;">
                           <h2> <span class="font info-class" >لا يوجد بيانات</span> </h2>
@@ -121,9 +122,7 @@
                       
                     </mat-expansion-panel-header>
                 
-                    <mat-form-field appearance="fill">
-                      <input matInput>
-                    </mat-form-field>
+                   <app-customer-company-view></app-customer-company-view>
                   </mat-expansion-panel>
                 
                   <mat-expansion-panel>
@@ -134,9 +133,7 @@
                       
                     </mat-expansion-panel-header>
                 
-                    <mat-form-field appearance="fill">
-                      <input matInput>
-                    </mat-form-field>
+                    <app-invoice-company-view></app-invoice-company-view>
                   </mat-expansion-panel>
 
                   <mat-expansion-panel>
@@ -147,9 +144,7 @@
                      
                     </mat-expansion-panel-header>
                 
-                    <mat-form-field appearance="fill">
-                      <input matInput>
-                    </mat-form-field>
+                    <app-invoice-line-company-view></app-invoice-line-company-view>
                   </mat-expansion-panel>
                 </mat-accordion>
 

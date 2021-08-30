@@ -24,12 +24,17 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { LoginComponent } from './pages/loginpage/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogInfoComponent } from './utilsForPages/dialog/dialogInfo/dialog-info/dialog-info.component';
 import { CommercialTransactionsComponent } from './pages/commercialTransactions/commercial-transactions/commercial-transactions.component';
 import { CompanySettingsComponent } from './pages/settings/company-settings/company-settings.component';
+import { CustomerCompanyViewComponent } from './pages/customerCompanyView/customer-company-view/customer-company-view.component';
+import { InvoiceCompanyViewComponent } from './pages/invoiceCompanyView/invoice-company-view/invoice-company-view.component';
+import { InvoiceLineCompanyViewComponent } from './pages/invoiceLineCompanyView/invoice-line-company-view/invoice-line-company-view.component';
+import { NotFoundComponent } from './pages/pageNotFound/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -39,13 +44,17 @@ import { CompanySettingsComponent } from './pages/settings/company-settings/comp
     LoginComponent,
     DialogInfoComponent,
     CommercialTransactionsComponent,
-    CompanySettingsComponent
+    CompanySettingsComponent,
+    CustomerCompanyViewComponent,
+    InvoiceCompanyViewComponent,
+    InvoiceLineCompanyViewComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule, MatButtonModule, MatIconModule, FormsModule, ReactiveFormsModule, MatDialogModule, HttpClientModule,
     AppRoutingModule, MatToolbarModule, MatMenuModule, MatStepperModule, MatFormFieldModule, MatSelectModule, MatTableModule,
     BrowserAnimationsModule, MatSidenavModule, MatInputModule, MatExpansionModule, MatSnackBarModule, MatDividerModule,
-    MatPaginatorModule, MatCheckboxModule
+    MatPaginatorModule, MatCheckboxModule, MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

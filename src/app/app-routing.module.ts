@@ -7,6 +7,7 @@ import { LoginLayoutComponent } from './layout/loginLayout/login-layout/login-la
 import { PageLayoutComponent } from './layout/pagesLayout/page-layout/page-layout.component';
 import { CommercialTransactionsComponent } from './pages/commercialTransactions/commercial-transactions/commercial-transactions.component';
 import { LoginComponent } from './pages/loginpage/login/login.component';
+import { NotFoundComponent } from './pages/pageNotFound/not-found/not-found.component';
 import { CompanySettingsComponent } from './pages/settings/company-settings/company-settings.component';
 
 const routes: Routes = [
@@ -37,6 +38,10 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       }
     ]
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 

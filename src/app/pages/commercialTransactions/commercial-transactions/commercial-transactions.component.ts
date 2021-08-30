@@ -53,6 +53,8 @@ export class CommercialTransactionsComponent implements OnInit {
     
     this.getInvoiceResultCompanyByCompanyId(this.companyObject.companyId);
     this.getUserCompanies(this.user.userName, this.token);
+
+    
   }
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
@@ -79,10 +81,10 @@ export class CommercialTransactionsComponent implements OnInit {
   // change informations
   onChangeItem(newValue: any) {
     if(newValue.value) {
-      console.log(newValue)
       this.store.storeElement('EMFETA-C-D', newValue.value);
     }
     this.getInvoiceResultCompanyByCompanyId(newValue.value.companyId);
+    window.location.reload();
   }
 
   displayedColumns: string[] = ['select', 'id', 'state', 'errors'];
