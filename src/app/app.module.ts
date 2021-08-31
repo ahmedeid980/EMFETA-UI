@@ -35,6 +35,7 @@ import { CustomerCompanyViewComponent } from './pages/customerCompanyView/custom
 import { InvoiceCompanyViewComponent } from './pages/invoiceCompanyView/invoice-company-view/invoice-company-view.component';
 import { InvoiceLineCompanyViewComponent } from './pages/invoiceLineCompanyView/invoice-line-company-view/invoice-line-company-view.component';
 import { NotFoundComponent } from './pages/pageNotFound/not-found/not-found.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,12 @@ import { NotFoundComponent } from './pages/pageNotFound/not-found/not-found.comp
     BrowserAnimationsModule, MatSidenavModule, MatInputModule, MatExpansionModule, MatSnackBarModule, MatDividerModule,
     MatPaginatorModule, MatCheckboxModule, MatProgressBarModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

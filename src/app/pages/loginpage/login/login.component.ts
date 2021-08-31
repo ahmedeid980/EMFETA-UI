@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
      private store: StoreDataService, private router: Router, private toaster: ToasterService) {}
 
   ngOnInit() {
-    
+    // this.loginInfo();
   }
 
   userComanyList: any;
@@ -53,6 +53,8 @@ export class LoginComponent implements OnInit {
       }, error => {
         this.toaster.openSnackBar('حدث خطأ في عملية الدخول للنظام', 'danger-toaster');
       });
+    } else {
+      this.toaster.openSnackBar('قم بادخال أسم المستخدم و كلمة المرور', 'warning-toaster');
     }
   }
 
@@ -64,6 +66,12 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/EMFETA/commercial-transactions']);
     }
     
+  }
+
+  loginInfo() {
+    this.api.loginInfo().subscribe((result: any) => {
+      console.log(result);
+    });
   }
 
 }

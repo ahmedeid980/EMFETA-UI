@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/apiService/api.service';
 import { StoreDataService } from 'src/app/services/storage/store-data.service';
 import { ToasterService } from 'src/app/services/toasted/toaster.service';
+import { ViewService } from 'src/app/services/viewService/view.service';
 
 @Component({
   selector: 'app-commercial-transactions',
@@ -16,7 +17,7 @@ import { ToasterService } from 'src/app/services/toasted/toaster.service';
 export class CommercialTransactionsComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion | undefined;
   constructor(private api: ApiService, private store: StoreDataService, 
-    private toaster: ToasterService) { }
+    private toaster: ToasterService, private view: ViewService) { }
 
   user: any;
   token: any;
@@ -52,6 +53,16 @@ export class CommercialTransactionsComponent implements OnInit {
     this.companyObject = this.store.getStoreElement('EMFETA-C-D');
     
     this.getInvoiceResultCompanyByCompanyId(this.companyObject.companyId);
+
+    // customer company view calling
+    this.getCustomerCompanyViewByCompanyId(this.companyObject.companyId);
+
+    // invoice comapny view calling
+    this.getInvoiceCompanyViewByCompanyId(this.companyObject.companyId);
+
+    // invoice line company view calling
+    this.getInvoiceLineCompanyViewByCompanyId(this.companyObject.companyId);
+
     this.getUserCompanies(this.user.userName, this.token);
 
     
@@ -84,7 +95,15 @@ export class CommercialTransactionsComponent implements OnInit {
       this.store.storeElement('EMFETA-C-D', newValue.value);
     }
     this.getInvoiceResultCompanyByCompanyId(newValue.value.companyId);
-    window.location.reload();
+
+    // customer company view calling
+    this.getCustomerCompanyViewByCompanyId(newValue.value.companyId);
+
+    // invoice comapny view calling
+    this.getInvoiceCompanyViewByCompanyId(newValue.value.companyId);
+
+    // invoice line company view calling
+    this.getInvoiceLineCompanyViewByCompanyId(newValue.value.companyId);
   }
 
   displayedColumns: string[] = ['select', 'id', 'state', 'errors'];
@@ -129,6 +148,40 @@ export class CommercialTransactionsComponent implements OnInit {
       console.log(this.selection.selected);
     else
       this.toaster.openSnackBar('يجب اختيار فاتورة على الاقل', 'warning-toaster');
+  }
+
+
+  // about customer company view 
+  getCustomerCompanyViewByCompanyId(companyId: number) {
+    this.api.getCustomerCompanyViewByCompanyId(companyId, this.token).subscribe( (jwtResponse: any) =>{
+      if(jwtResponse.data.length > 0) {
+        this.view.updateCustomerCompanyView(jwtResponse.data);
+      }
+    }, error => {
+      this.toaster.openSnackBar('حدث خطأ في النظام', 'danger-toaster');
+    });
+  }
+
+  // about invoice company view
+  getInvoiceCompanyViewByCompanyId(companyId: number) {
+    this.api.getInvoiceCompanyViewByCompanyId(companyId, this.token).subscribe( (jwtResponse: any) =>{
+      if(jwtResponse.data.length > 0) {
+        this.view.updateInvoiceCompanyView(jwtResponse.data);
+      }
+    }, error => {
+      this.toaster.openSnackBar('حدث خطأ في النظام', 'danger-toaster');
+    });
+  }
+
+  // about invoice line company view
+  getInvoiceLineCompanyViewByCompanyId(companyId: number) {
+    this.api.getInvoiceLineCompanyViewByCompanyId(companyId, this.token).subscribe( (jwtResponse: any) =>{
+      if(jwtResponse.data.length > 0) {
+        this.view.updateInvoiceLineCompanyView(jwtResponse.data);
+      }
+    }, error => {
+      this.toaster.openSnackBar('حدث خطأ في النظام', 'danger-toaster');
+    });
   }
 
 }

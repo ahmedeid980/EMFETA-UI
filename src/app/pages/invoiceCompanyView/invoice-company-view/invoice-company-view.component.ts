@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/apiService/api.service';
 import { StoreDataService } from 'src/app/services/storage/store-data.service';
 import { ToasterService } from 'src/app/services/toasted/toaster.service';
+import { ViewService } from 'src/app/services/viewService/view.service';
 
 @Component({
   selector: 'app-invoice-company-view',
@@ -12,7 +13,8 @@ import { ToasterService } from 'src/app/services/toasted/toaster.service';
 })
 export class InvoiceCompanyViewComponent implements OnInit {
 
-  constructor(private api: ApiService, private toaster: ToasterService, private store: StoreDataService) { }
+  constructor(private api: ApiService, private toaster: ToasterService, private store: StoreDataService, 
+    private view: ViewService) { }
 
   viewInfoStatus: boolean = false;
   displayedColumns: string[] = ['customerId' ,'dateTimeIssued'];
@@ -20,30 +22,25 @@ export class InvoiceCompanyViewComponent implements OnInit {
   user: any;
   token: any;
   companyObject: any;
+  resultInvoiceCompanyData: any;
+  @ViewChild(MatPaginator) paginatorCustomer?: MatPaginator;
   ngOnInit(): void {
     this.user = this.store.getStoreElement('EMFETA-U-O');
     this.token = this.store.getStoreElement('EMFETA-U-T');
     this.companyObject = this.store.getStoreElement('EMFETA-C-D');
 
-    this.getInvoiceCompanyViewByCompanyId(this.companyObject.companyId);
-  }
-
-  resultInvoiceCompanyData: any;
-  @ViewChild(MatPaginator) paginatorCustomer?: MatPaginator;
-  getInvoiceCompanyViewByCompanyId(companyId: number) {
-    this.api.getInvoiceCompanyViewByCompanyId(companyId, this.token).subscribe( (jwtResponse: any) =>{
-      if(jwtResponse.data.length > 0) {
-        this.resultInvoiceCompanyData = new MatTableDataSource<any>(jwtResponse.data);
+    // this.getInvoiceCompanyViewByCompanyId(this.companyObject.companyId);
+    this.view.invoiceCompanyView.subscribe((element: any) => {
+      if(element) {
+        this.resultInvoiceCompanyData = new MatTableDataSource<any>(element);
         this.resultInvoiceCompanyData.paginator = this.paginatorCustomer;
         this.viewInfoStatus = true;
       } else {
         this.viewInfoStatus = false;
       }
-    }, error => {
-      this.toaster.openSnackBar('حدث خطأ في النظام', 'danger-toaster');
     });
   }
-
+  
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.resultInvoiceCompanyData.filter = filterValue.trim().toLowerCase();

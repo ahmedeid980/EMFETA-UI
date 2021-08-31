@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { CustomService } from 'src/app/services/custom/custom.service';
 import { StoreDataService } from 'src/app/services/storage/store-data.service';
 import { DialogInfoComponent } from 'src/app/utilsForPages/dialog/dialogInfo/dialog-info/dialog-info.component';
 

@@ -10,8 +10,10 @@ export class ApiService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  private URL_LOGIN = 'http://localhost:8080/userlogin/EMFETASystem';
-  private URL_APIs = 'http://localhost:8080/api-system-controller/EMFETASystem/api';
+  // private URL_LOGIN = 'http://localhost:8021/userlogin/EMFETASystem';
+  // private URL_APIs = 'http://localhost:8021/api-system-controller/EMFETASystem/api';
+  private URL_LOGIN = 'http://localhost:8083/demo-0.0.1-SNAPSHOT/userlogin/EMFETASystem';
+  private URL_APIs = 'http://localhost:8083/demo-0.0.1-SNAPSHOT/api-system-controller/EMFETASystem/api';
 
 
   private getServerErrorMessage(error: HttpErrorResponse): string {
@@ -19,20 +21,21 @@ export class ApiService {
     switch (error.status) {
 
       case 404: {
-        return `Not Found: ${error.message}`;
         this.router.navigate(['**']);
+        return `Not Found: ${error.message}`;
       }
       case 403: {
+        this.router.navigate(['/EMFETA/login']);
+        localStorage.clear();
         return `Access Denied: ${error.message}`;
-        this.router.navigate(['**']);
       }
       case 500: {
-        return `Internal Server Error: ${error.message}`;
         this.router.navigate(['**']);
+        return `Internal Server Error: ${error.message}`;
       }
       default: {
-        return `Unknown Server Error: ${error.message}`;
         this.router.navigate(['**']);
+        return `Unknown Server Error: ${error.message}`;
       }
     }
   }
@@ -254,6 +257,34 @@ export class ApiService {
     };
     
     return this.http.post(this.URL_APIs+'/getInvoiceLineCompanyViewByCompanyId/'+companyId, null, requestOptions).pipe(
+      catchError(error => {
+        let errorMsg: string = '';
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message}`;
+        } else {
+          errorMsg = this.getServerErrorMessage(error);
+        }
+        return errorMsg;
+      })
+    );
+  }
+
+
+  /**
+   * login information 
+   */
+   loginInfo() {
+    let body = new URLSearchParams();
+    body.set('grant_type', 'client_credentials');
+    body.set('client_id', '9f22e6f7-04ce-498e-a7fa-f8b16aa2bc56');
+    body.set('client_secret', '9bb36982-db04-4a9e-a531-c59a200ac061');
+    body.set('scope', 'InvoicingAPI');
+    
+    let options = {
+        headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    };
+
+    return this.http.post('https://id.preprod.eta.gov.eg/connect/token', body, options).pipe(
       catchError(error => {
         let errorMsg: string = '';
         if (error.error instanceof ErrorEvent) {

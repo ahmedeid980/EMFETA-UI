@@ -11,6 +11,7 @@
 html,
 body {
   height: 100%;
+  
 }
 body {
   margin: 0;
@@ -50,7 +51,7 @@ div.content-header {
 
   & .views {
     margin-top: 20px;
-    height: 80vh;
+    height: 70vh;
     overflow: auto;
   }
 }

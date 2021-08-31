@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 // import  Swal  from 'sweetalert2';
 
 @Injectable({
@@ -13,16 +13,6 @@ export class CustomService {
     let newEmail = email.split('@')[0];
 
     return newEmail + '@gmail.com';
-  }
-
-  _success = new Subject<string>();
-  _type = new Subject<string>();
-  _face = new Subject<string>();
-
-  changeSuccessMessage(message: string, type: string, face: string) {
-    this._success.next(message);
-    this._type.next(type);
-    this._face.next(face);
   }
 
   resetComponentElement(formGroup: any) {
@@ -42,9 +32,15 @@ export class CustomService {
     return false;
   }
 
-  // notificationStatus_success_OR_info_OR_error(message: string, header: string, _type: any) {
-  //   Swal.fire(header, message, _type);
-  // }
-
+  // subscription of progress bar
+  /**
+   * progressBar
+   * fun ... updateProgessBar
+   */
+   private _progressBar = new BehaviorSubject(0);
+   invoiceLineCompanyView = this._progressBar.asObservable();
+   public updateProgressBar(element: any) {
+     this._progressBar.next(element);
+   }
 
 }
